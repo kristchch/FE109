@@ -18,3 +18,4 @@ function getGrade (s1, s2, s3) {
     if (x >= 60 && x <= 70) return 'D';
     if (x >= 0 && x <= 60) return 'F';
 }
+ 
