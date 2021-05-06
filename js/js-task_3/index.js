@@ -18,61 +18,50 @@ while (i >= 8) {
 i = 89;
 
 while (i >= 11) {
-    document.write(i + '</br>');
+    document.write(i + '<br />');
     i--;
 }
 
 
 //3 задание
-a = 100;
-let sum = 0;
+i, sum = 0;
 
-for (i = 0; i <= a; i++) {
-
-    sum = 0;
-
-    for (let j = 0; j <= i; j++) {
-        sum += j;
-    }
+for (i = 0; i <= 100; i++) {
+    sum += i
 }
 
-console.log('Сумма ' + ' = ' + sum);
+console.log(+sum);
 
 
 //4 задание
-a = 5;
 sum = 0;
 
-for (i = 0; i <= a; i++) {
-
-    sum = 0;
-
-    for (j = 0; j <= i; j++) {
-        sum += j;
-
-    }
-    console.log('Сумма ' + i + ' = ' + sum);
+for (i = 1; i <= 5; i++) {
+    sum += i;
+    console.log(sum);
 }
 
 
 //5 задание
 for (i = 8; i <= 56; i++) {
-    if (i % 2 == 1) continue;
+    if (i % 2 == 0);
     console.log(i);
+}
+
+i = 8;
+
+while (i <= 56) {
+    if (i % 2 == 0) {
+        console.log(i);
+    }
+    i++;
 }
 
 
 //6 задание
-a = 10;
-sum = 0;
-
-for (i = 2; i <= a; i++) {
-
-    sum = 0;
-
-    for (j = 1; j <= a; j++) {
-        sum = i * j;
-        console.log(i + ' * ' + j + ' = ' + sum);
+for (i = 2; i <= 10; i++) {
+    for (j = 1; j <= 10; j++) {
+        console.log(i + ' * ' + j + ' = ' + (i * j));
     }
 }
 
@@ -81,34 +70,32 @@ for (i = 2; i <= a; i++) {
 let n = 1000,
     num = 0;
 
-while (n >= 50) {
-    n /= 2;
-    num++;
+while (true) {
+    if (n >= 50) {
+        n = n / 2;
+        num++;
+    } else {
+        break;
+    }
 }
-
-console.log('Итераций' + num);
-console.log('Остаток' + n);
-
+console.log(n, num);
 
 //8 задание
 num,
 sum = 0,
-i = 0;
+i =0;
+let agNum = 0;
 
 while (true) {
-    num = +prompt('Введите число');
-    if (isNaN(num)) {
-        alert('Введите число!');
-    } else if (num == 0) {
+    num = +prompt('Введите число для задания 8');
+    if (num == 0) {
         break;
-    } else {
-        sum += num;
-        i++;
     }
+    sum += num;
+    i++;
+    console.log(num + ' ' + sum + ' ' + i);
 }
-
-console.log('Сумма = ' + sum);
-console.log('Среднее = ' + sum / i);
+console.log('Сумма ' + sum + 'Среднее ' + sum / i);
 
 
 //9 задание
@@ -130,15 +117,14 @@ console.log(`Максимальное ${max}, Минимальное ${min}`);
 
 
 //10 задание
-n = prompt('Введите число');
+let str = prompt('Введите число для задания 10');
+
 sum = 0;
+arrStr = str.split('');
 
-for (let digit of n) {
-    sum += +digit;
+for (i = 0; i < arrStr.length; i++) {
+    sum += +arrStr[i];
 }
-
-console.log(`Цифр в числе = ${n.length}`);
-console.log(`По числам = ` + ('' + n).split('').join(' '));
-console.log(`Обратный порядок = ` + ('' + n).split('').reverse().join(''));
-console.log(`Сумма числа = ${sum}`);
- 
+console.log('Число: ' + str);
+rev = arrStr.reverse().join("");
+console.log('Цифр в числе : ' + arrStr.length + ' ' + 'Сумма чисел массива: ' + sum + ' ' + 'Обратный порядок: ' + rev);
