@@ -128,3 +128,4 @@ for (i = 0; i < arrStr.length; i++) {
 console.log('Число: ' + str);
 rev = arrStr.reverse().join("");
 console.log('Цифр в числе : ' + arrStr.length + ' ' + 'Сумма чисел массива: ' + sum + ' ' + 'Обратный порядок: ' + rev);
+
