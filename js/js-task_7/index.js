@@ -35,7 +35,25 @@ let Calculator = function() {
         this.show();
     }
     this.show = function() {
-        console.log('Ваше действие: ' + this.operation);
+        let res;
+        if (this.result == this.a + this.b) {
+            res = 'сложение';
+        } else if (this.result == this.a - this.b) {
+            res = 'вычитание';
+        } else if (this.result == this.a * this.b) {
+            res = 'умножение';
+        } else if (this.result == this.a / this.b) {
+            res = 'деление';
+        } else if (this.result == Math.sqrt(this.a)) {
+            res = 'вычисление корня из a';
+        } else if (this.result == Math.sqrt(this.b)) {
+            res = 'вычисление корня из b';
+        } else if (this.result == Math.sqrt(this.a + this.b)) {
+            res = 'вычисление корня из суммы';
+        } else if (this.result == 'Такого действия нет(') {
+            res = '-';
+        }
+        console.log('Ваше действие: ' + res);
         console.log('Ваши числа: ' + this.a + ' и ' + this.b);
         console.log('Ответ: ' + this.result);
     }
