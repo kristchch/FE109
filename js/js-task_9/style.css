@@ -114,10 +114,17 @@ h1 {
     opacity: 0.5;
 }
 
-.list .done .button-check {
-    background-color: #fff0f5;
+.list .done .text-todo {
+    text-decoration: line-through;
+    text-decoration-color: black;
 }
 
+.list .done .button-check {
+    background-image: url(check.png);
+    background-repeat: no-repeat;
+    background-size: 30px 18px;
+    background-position: center;
+}
 
 
 button.button {

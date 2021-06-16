@@ -3,19 +3,58 @@ window.addEventListener('load', function() {
     let input = document.querySelector('input[type="text"]'),
         ul = document.querySelector('.ul-todo');
 
+    
+    function todoDone(element) {
+        element.addEventListener('click', function() {
+            this.closest("li").classList.toggle('done');
+        });
+    }
+    
 
-    //функция для создания пункта списка дел
+    function todoChange(element) {
+        element.addEventListener('dblclick', function() {
+            let txt = this.textContent;
+            let changeTodo = prompt('Редактирование пункта', txt) || txt;
+            this.innerHTML = changeTodo; 
+        });
+    }
+
+
+    function todoDelete(element) {
+        element.addEventListener("click", function() {
+            this.parentElement.remove();
+        });
+    }
+
+    function todoClear() {
+        let clearButton = document.querySelector('button.button');
+        clearButton.addEventListener('click', () => {
+            ul.innerHTML = '';
+        });
+    }
+
+
     let createToDo = function() {
-        //создание li и текста внутри
         let li = document.createElement('li'),
             todoSpan = document.createElement('span');
         li.classList.add('todoLi');
         todoSpan.classList.add('text-todo');
 
-        let newTodo = input.value;
-        todoSpan.append(newTodo);
 
-        //создание кнопки выполнения
+        let newTodo = input.value;
+        function checkText() {
+            let regeExp = /\w|[а-я]/gi;
+            if ((regeExp.test(newTodo)) == false) {
+                alert('Повторите ввод своего великого дела!');
+                newTodo.remove(); //почему выдаёт в консоли ошибку? и как вернуть ввод в начало input? т.е. когда вводишь кучу точек, выходит alert и эти же точки остаются в input. Также при нажатии кнопки "Очистить всё" эти точки тоже остаются
+                return 
+            } else {
+                todoSpan.append(newTodo);
+            }
+        }
+        checkText();
+
+
         let checkTodo = document.createElement('span');
         checkTodo.classList.add('check');
 
@@ -23,7 +62,7 @@ window.addEventListener('load', function() {
         buttonCheck.classList.add('button-check');
         checkTodo.append(buttonCheck);
 
-        //создание кнопки удаления
+
         let deleteTodo = document.createElement('span');
         deleteTodo.classList.add('trash');
 
@@ -36,46 +75,19 @@ window.addEventListener('load', function() {
         todoDone(checkTodo);
         todoChange(todoSpan);
         todoDelete(deleteTodo);
+        todoClear();
     }
 
 
-    //создание пункта списка при нажатии на кнопку
     let addition = document.querySelector('.field i');
     addition.addEventListener('click', createToDo);
 
 
-    //создание пункта списка при нажатии enter
     input.addEventListener('keypress', (key) => {
         let keyEnter = 13;
         if (key.which == keyEnter) {
             createToDo();
         }
     });
-
-
-    // //функция для удаления пункта списка
-    // function todoDelete(element) {
-    //     element.addEventListener("click", (event) => {
-    //         element.parentElement.remove();
-    //         event.stopPropagation();
-    //     });
-    // }
-
-
-    // //функция для сделанного пункта
-    // function todoDone(element) {
-    //     element.addEventListener('click', function() {
-    //         let li = document.querySelector('.todoLi');
-    //         li.classList.toggle('done');
-    //     });
-    // }
-
-    // // //изменение пункта по двойному клику
-    // // function todoChange(element) {
-    // //     element.addEventListener('dblclick', function() {
-    // //         let changeTodo = prompt('Редактирование пункта');
-
-    // //     });
-    // // }
 
 });
