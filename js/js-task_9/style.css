@@ -13,7 +13,7 @@ body, input, button {
     width: 50%;
     margin: 20px auto;
     padding: 15px;
-    background-color: #cc99ff;
+    background: linear-gradient(to bottom, #cc99ff, #cc33ff);
     border: 2px solid darkgrey;
     border-radius: 5px;
 }
@@ -49,6 +49,10 @@ h1 {
     padding: 10px;
     background-color: #fff;
     border: 3px solid #cc99ff;
+}
+
+.field input:hover {
+    background-color: #f0f0f0;
 }
 
 .field i {
@@ -135,4 +139,8 @@ button.button {
     cursor: pointer;
     background-color: #fff;
     border: 3px solid lightgrey;
+}
+
+button.button:hover {
+    background-color: #f1f1f1;
 }
