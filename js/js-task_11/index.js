@@ -34,8 +34,8 @@ class Teacher extends User {
 
 let maria = new Student('Мария', 'Маринина', 'студентка', '2018');
 // console.log(maria);
-// console.log(maria.getCourse());
+maria.getCourse();
 
 let filip = new Teacher('Филипп', 'Филиппин', 'преподователь', '230$', 'Математика', 'Физика');
 // console.log(filip);
-// console.log(filip.getCourse());
+filip.getCourse();
