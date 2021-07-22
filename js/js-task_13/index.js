@@ -19,6 +19,7 @@ class Contacts {
 
     edit(event, id) {
         let user = this.data.find(item => item.id === id);
+        // console.log(user);
         user.name = event.currentTarget[0].value;
         user.email = event.currentTarget[1].value;
         user.phone = event.currentTarget[2].value;
@@ -30,23 +31,7 @@ class Contacts {
     }
 
     add(event) {
-        let name = event.currentTarget[0].value;
-        // function checkName(name) {
-        //     let regExpName = /^[a-zA-Z]/gi;
-        // if (regExpName.test(name) == true) {
-        //     alert('Проверьте ввод имени!');
-        //     event.currentTarget[0].classList.add('invalid');
-        //     event.preventDefault();
-        //     return false;
-        // } else {
-        //     name = event.currentTarget[0].value;
-        //     event.currentTarget[0].classList.remove('invalid');
-        // }
-        // }
-        // checkName(this.name);
-
         let email = event.currentTarget[1].value;
-        let phone = event.currentTarget[2].value;
         let address = event.currentTarget[3].value;
 
         let maxId = 0;
@@ -56,8 +41,23 @@ class Contacts {
 
         maxId++;
 
-        let newUser = new User(maxId, name, email, address, phone);
-        this.data.push(newUser);
+        let regexpName = /^[a-zA-Zа-яА-Я]/gi,
+            regexpPhone = /^\d+$/gi;
+
+        if (!regexpName.test(event.currentTarget[0].value)) {
+            alert('Неправильный ввод имени!');
+            return false;
+        } else {
+            let name = event.currentTarget[0].value;
+            if(!regexpPhone.test(event.currentTarget[2].value)) {
+                alert('Неправильный ввод телефона!');
+                return false;
+            } else {
+                let phone = event.currentTarget[2].value;
+                let newUser = new User(maxId, name, email, phone, address);
+                this.data.push(newUser);
+            }
+        }
     }
 }
 
@@ -131,13 +131,13 @@ class ContactsApp extends Contacts {
         document.getElementById(id).innerHTML = `
             <form id="changeForm" novalidate>
                 <label for="name">Имя:</label>
-                <input type='text' id="name" placeholder="Имя" value='${changeUser.name}'>
+                <input type='text' placeholder="Имя" value='${changeUser.name}'>
                 <label for="email">Email:</label>
-                <input type='email' id="email" placeholder="Email" value='${changeUser.email}'>
+                <input type='email' placeholder="Email" value='${changeUser.email}'>
                 <label for="phone">Телефон:</label>
-                <input type='phone' id="phone" placeholder="Тел" value='${changeUser.phone}'>
+                <input type='phone'  placeholder="Тел" value='${changeUser.phone}'>
                 <label for="address">Адрес:</label>
-                <input type='address' id="address" placeholder="Адрес" value='${changeUser.address}'>
+                <input type='address' placeholder="Адрес" value='${changeUser.address}'>
                 <button class="checkBtn" type="submit"><i class="fas fa-check"></i></button>
             </form>
         `;

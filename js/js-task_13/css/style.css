@@ -79,6 +79,8 @@ input.invalid {
 
 /*****************************/
 .wrapperContacts {
+    max-width: 1300px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
@@ -88,6 +90,7 @@ input.invalid {
     height: 300px;
     width: 250px;
     margin-bottom: 40px;
+    margin-right: 40px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
